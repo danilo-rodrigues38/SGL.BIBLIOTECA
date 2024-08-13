@@ -1,6 +1,5 @@
 ﻿using SGL.BIBLIOTECA.ConsoleApp.Models;
 
-
 while (true)
 {
     Console.Clear ( );
@@ -17,13 +16,10 @@ while (true)
     switch (opcao)
     {
         case "1":
-            Teste ( );
-            Pausa ( );
             break;
 
         case "2":
-            Teste ( );
-            Pausa ( );
+            MenuUsuarioManager ( );
             break;
 
         case "3":
@@ -41,6 +37,68 @@ while (true)
     }
 }
 
+static void MenuUsuarioManager()
+{
+    UsuarioManager usuarioManager = new UsuarioManager();
+
+    while(true)
+    {
+        Console.Clear();
+        Cabecalho();
+        
+        Console.WriteLine ( "          Escolha uma opcão          " );Console.WriteLine("            LISTA DE USUÁRIO           ");
+        Console.WriteLine ( "-------------------------------------\n");
+        Console.WriteLine ( "1 - Adicionar usuário" );
+        Console.WriteLine ( "2 - Listar todos os usuários" );
+        Console.WriteLine ( "3 - Localizar usuário pelo nome" );
+        Console.WriteLine ( "4 - Localizar usuário pelo email" );
+        Console.WriteLine ( "5 - Desativar um usuáro" );
+        Console.WriteLine ( "6 - Ativar um usuário" );
+        Console.WriteLine ( "7 - Voltar para o menu anterior" );
+
+        var opcao = Console.ReadLine ( );
+
+        switch (opcao)
+        {
+            case "1":
+                break;
+
+            case "2":
+                Pausa ( );
+                break;
+
+            case "3":
+                Pausa ( );
+                break;
+
+            case "4":
+                Pausa ( );
+                break;
+
+            case "5":
+                Pausa ( );
+                break;
+
+            case "6":
+                Pausa ( );
+                break;
+
+            case "7":
+                return;
+
+            default:
+                Console.WriteLine ( "Opção inválida!" );
+                Pausa ( );
+                break;
+        }
+    }
+}
+
+static void MenuUsuario ( )
+{
+    Console.WriteLine ( "Link Funcionando" );
+}
+
 static void MenuLivraria( )
 {
     Acervo acervo = new Acervo ();
@@ -50,7 +108,17 @@ static void MenuLivraria( )
         Console.Clear ( );
         acervo.LerArquivo ( );
         Cabecalho ( );
-        MenuLivro ( );
+        
+        Console.WriteLine ( "          Escolha uma opcão          " );
+        Console.WriteLine ( "-------------------------------------\n" );
+        Console.WriteLine ( "1 - Adicionar um Livro" );
+        Console.WriteLine ( "2 - Listar todos os livros" );
+        Console.WriteLine ( "3 - Localizar livro pelo título" );
+        Console.WriteLine ( "4 - Localizar livro pelo autor" );
+        Console.WriteLine ( "5 - Desativar um livro" );
+        Console.WriteLine ( "6 - Ativar livro" );
+        Console.WriteLine ( "7 - Voltar para o menu anterior" );
+
         var opcao = Console.ReadLine ( );
 
         switch (opcao)
@@ -102,26 +170,8 @@ static void Cabecalho ( )
     Console.WriteLine ( "--------------------------------------\n" );
 }
 
-static void MenuLivro ( )
-{
-    Console.WriteLine ( "          Escolha uma opcão          " );
-    Console.WriteLine ( "-------------------------------------\n" );
-    Console.WriteLine ( "1 - Adicionar um Livro" );
-    Console.WriteLine ( "2 - Listar todos os livros" );
-    Console.WriteLine ( "3 - Localizar livro pelo título" );
-    Console.WriteLine ( "4 - Localizar livro pelo autor" );
-    Console.WriteLine ( "5 - Desativar um livro" );
-    Console.WriteLine ( "6 - Ativar livro" );
-    Console.WriteLine ( "7 - Voltar para o menu anterior" );
-}
-
 static void Pausa ( )
 {
     Console.WriteLine ( "\nTecle ENTER para continuar..." );
     Console.ReadLine ( );
-}
-
-static void Teste ( )
-{
-    Console.WriteLine ( "Link Funcionando" );
 }

@@ -1,0 +1,18 @@
+[
+  {
+    "Id": 1,
+    "Titulo": "Danilo",
+    "Autor": "Danilo",
+    "Isbn": "123456",
+    "DataPublicacao": "1900-01-01T00:00:00",
+    "Ativo": true
+  },
+  {
+    "Id": 2,
+    "Titulo": "Herrera",
+    "Autor": "Herrera",
+    "Isbn": "789456",
+    "DataPublicacao": "1900-01-01T00:00:00",
+    "Ativo": true
+  }
+]

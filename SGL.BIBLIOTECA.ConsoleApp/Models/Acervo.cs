@@ -5,7 +5,7 @@ namespace SGL.BIBLIOTECA.ConsoleApp.Models
     public class Acervo
     {
         string folder = "Gravadas";
-        string fileName = "biblioteca.txt";
+        string fileName = "biblioteca.json";
         string path = "Gravadas\\biblioteca.json";
         string line;
 
@@ -54,10 +54,10 @@ namespace SGL.BIBLIOTECA.ConsoleApp.Models
             {
                 Console.Clear ( );
 
-                //if ( Livros.Count == 0 )
-                //{
-                //    LerArquivo ( );
-                //}
+                if (Livros.Count == 0)
+                {
+                    LerArquivo ( );
+                }
 
                 Console.WriteLine ( "               Listagem de livros" );
                 Console.WriteLine ( "               ------------------\n" );
@@ -70,8 +70,6 @@ namespace SGL.BIBLIOTECA.ConsoleApp.Models
                         livro.DetalheLivro ( );
                     }
                 }
-
-                //GravarArquivo ( );
             }
             catch (Exception ex)
             {
@@ -92,8 +90,6 @@ namespace SGL.BIBLIOTECA.ConsoleApp.Models
                         livro.DetalheLivro ( );
                     }
                 }
-
-                //GravarArquivo ( );
             }
             catch (Exception ex)
             {
@@ -237,10 +233,6 @@ namespace SGL.BIBLIOTECA.ConsoleApp.Models
             catch (Exception ex)
             {
                 Console.WriteLine ( "ERRO: " + ex.Message );
-            }
-            finally
-            {
-                Console.WriteLine ( "\nFim da leitura do arquivo.\n" );
             }
         }
     }

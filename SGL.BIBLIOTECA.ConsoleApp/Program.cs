@@ -46,8 +46,8 @@ static void MenuUsuarioManager()
         Console.Clear();
         Cabecalho();
         
-        Console.WriteLine ( "          Escolha uma opcão          " );Console.WriteLine("            LISTA DE USUÁRIO           ");
-        Console.WriteLine ( "-------------------------------------\n");
+        Console.WriteLine ( "          Escolha uma opcão          " );
+        Console.WriteLine ( "--------------------------------------\n");
         Console.WriteLine ( "1 - Adicionar usuário" );
         Console.WriteLine ( "2 - Listar todos os usuários" );
         Console.WriteLine ( "3 - Localizar usuário pelo nome" );
@@ -61,25 +61,31 @@ static void MenuUsuarioManager()
         switch (opcao)
         {
             case "1":
+                usuarioManager.AdicionarUsuario ( );
                 break;
 
             case "2":
+                usuarioManager.ListarUsuario ( );
                 Pausa ( );
                 break;
 
             case "3":
+                usuarioManager.LocalizarUsuarioPeloNome ( );
                 Pausa ( );
                 break;
 
             case "4":
+                usuarioManager.LocalizarUsuarioPeloEmail ( );
                 Pausa ( );
                 break;
 
             case "5":
+                usuarioManager.DesativarUsuario ( );
                 Pausa ( );
                 break;
 
             case "6":
+                usuarioManager.AtivarUsuario ( );
                 Pausa ( );
                 break;
 

@@ -15,11 +15,6 @@ namespace SGL.BIBLIOTECA.ConsoleApp.Models
         {
             try
             {
-                if (usuarios.Count == 0)
-                {
-                    Lerarquivo ( );
-                }
-
                 Console.Clear();
                 Console.WriteLine ( "                  CADASTRO DE USUÁRIO                  " );
                 Console.WriteLine ( "-------------------------------------------------------\n" );
@@ -49,12 +44,6 @@ namespace SGL.BIBLIOTECA.ConsoleApp.Models
             try
             {
                 Console.Clear ( );
-
-                if ( usuarios.Count == 0)
-                {
-                    Lerarquivo ( );
-                }
-
                 Console.WriteLine ( "                    LISTA DE USUÁRIO                   " );
                 Console.WriteLine ( "-------------------------------------------------------\n" );
 
@@ -202,7 +191,7 @@ namespace SGL.BIBLIOTECA.ConsoleApp.Models
             }
         }
 
-        public void Lerarquivo ( )
+        public void LerArquivo ( )
         {
             Console.Clear ( );
             try

@@ -53,12 +53,6 @@ namespace SGL.BIBLIOTECA.ConsoleApp.Models
             try
             {
                 Console.Clear ( );
-
-                if (Livros.Count == 0)
-                {
-                    LerArquivo ( );
-                }
-
                 Console.WriteLine ( "               Listagem de livros" );
                 Console.WriteLine ( "               ------------------\n" );
                 Console.WriteLine ( "Detalhes do Livro:" );

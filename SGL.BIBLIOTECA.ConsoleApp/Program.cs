@@ -16,6 +16,7 @@ while (true)
     switch (opcao)
     {
         case "1":
+            MenuEmprestimoDevolucao ( );
             break;
 
         case "2":
@@ -37,6 +38,11 @@ while (true)
     }
 }
 
+static void MenuEmprestimoDevolucao ( )
+{
+    Console.WriteLine ( "Link Funcionando" );
+}
+
 static void MenuUsuarioManager()
 {
     UsuarioManager usuarioManager = new UsuarioManager();
@@ -44,6 +50,7 @@ static void MenuUsuarioManager()
     while(true)
     {
         Console.Clear();
+        usuarioManager.LerArquivo ( );
         Cabecalho();
         
         Console.WriteLine ( "          Escolha uma opcão          " );
@@ -98,11 +105,6 @@ static void MenuUsuarioManager()
                 break;
         }
     }
-}
-
-static void MenuUsuario ( )
-{
-    Console.WriteLine ( "Link Funcionando" );
 }
 
 static void MenuLivraria( )

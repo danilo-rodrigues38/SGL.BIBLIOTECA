@@ -19,8 +19,8 @@
         {
             Console.WriteLine ( "" );
             Console.WriteLine ( $"Id: {Id}" );
-            Console.WriteLine ( $"Título: {Nome}" );
-            Console.WriteLine ( $"Autor: {Email}" );
+            Console.WriteLine ( $"Nome: {Nome}" );
+            Console.WriteLine ( $"E-mail: {Email}" );
         }
     }
 }

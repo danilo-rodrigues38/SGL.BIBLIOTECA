@@ -11,10 +11,10 @@
             DataDevolução = DateTime.Today.AddDays(15);
         }
 
-        public int Id { get; protected set; }
-        public Usuario UsuarioId { get; protected set; }
-        public List<Livro> LivroList { get; protected set; }
-        public DateTime DataEmprestimo { get; protected set; }
-        public DateTime DataDevolução { get; protected set; }
+        public int Id { get; set; }
+        public Usuario UsuarioId { get; set; }
+        public List<Livro> LivroList { get; set; }
+        public DateTime DataEmprestimo { get; set; }
+        public DateTime DataDevolução { get; set; }
     }
 }

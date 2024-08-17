@@ -1,0 +1,11 @@
+[
+  {
+    "Id": 1,
+    "UsuarioId": null,
+    "LivroList": [
+      null
+    ],
+    "DataEmprestimo": "2024-08-17T09:25:02.2403584-03:00",
+    "DataDevolução": "2024-09-01T00:00:00-03:00"
+  }
+]

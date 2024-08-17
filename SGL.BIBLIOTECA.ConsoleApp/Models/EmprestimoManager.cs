@@ -14,21 +14,21 @@ namespace SGL.BIBLIOTECA.ConsoleApp.Models
         string pathUsuarios = "Gravadas\\usuario.json";
         string pathEmprestimos = "Gravadas\\emprestimo.json";
 
-        public void RecebeTodosLivros ( )
+        public void RecebeTodosLivros()
         {
             string deserializado = File.ReadAllText(pathLivros);
 
-            livros = JsonConvert.DeserializeObject<List<Livro>> ( deserializado );
+            livros = JsonConvert.DeserializeObject<List<Livro>>(deserializado);
         }
 
-        public void RecebeTodosUsuarios ( )
+        public void RecebeTodosUsuarios()
         {
             string deserializado = File.ReadAllText(pathUsuarios);
 
-            usuarios = JsonConvert.DeserializeObject<List<Usuario>> ( deserializado );
+            usuarios = JsonConvert.DeserializeObject<List<Usuario>>(deserializado);
         }
 
-        public void EmprestarLivro ( )
+        public void EmprestarLivro()
         {
             try
             {
@@ -36,22 +36,22 @@ namespace SGL.BIBLIOTECA.ConsoleApp.Models
 
                 var id = emprestimos.Count + 1;
 
-                #region Localizar Usuário
+                #region Localizar Usuï¿½rio
 
-                Console.Write ( "Digite o nome do usuáro: " );
-                var nomeUsuario = Console.ReadLine ( );
+                Console.Write("Digite o nome do usuï¿½ro: ");
+                var nomeUsuario = Console.ReadLine();
 
-                var usuariosLocalizados = usuarios.Where(u => u.Nome.ToUpper().Contains (nomeUsuario.ToUpper()) && u.Ativo);
+                var usuariosLocalizados = usuarios.Where(u => u.Nome.ToUpper().Contains(nomeUsuario.ToUpper()) && u.Ativo);
 
                 foreach (var usuarioLocalizado in usuariosLocalizados)
                 {
-                    usuarioLocalizado.DetalheUsuario ( );
+                    usuarioLocalizado.DetalheUsuario();
                 }
 
-                Console.Write ( "\nAgora, digite o id do usuario: " );
-                var usuarioIdLocalizar = int.Parse(Console.ReadLine ( ));
+                Console.Write("\nAgora, digite o id do usuario: ");
+                var usuarioIdLocalizar = int.Parse(Console.ReadLine());
 
-                var usuarioId = usuarios.Find ( i => i.Id == usuarioIdLocalizar );
+                var usuarioId = usuarios.Find(i => i.Id == usuarioIdLocalizar);
 
                 #endregion
 
@@ -61,95 +61,95 @@ namespace SGL.BIBLIOTECA.ConsoleApp.Models
 
                 do
                 {
-                    Console.Write ( "\nAgora digite o nome do livro que deseja: " );
-                    var livroescolhido = Console.ReadLine ( );
+                    Console.Write("\nAgora digite o nome do livro que deseja: ");
+                    var livroescolhido = Console.ReadLine();
 
-                    var livrosAchados = livros.Where ( a => a.Titulo.ToUpper ( ).Contains ( livroescolhido.ToUpper ( ) ) && a.Ativo );
+                    var livrosAchados = livros.Where(a => a.Titulo.ToUpper().Contains(livroescolhido.ToUpper()) && a.Ativo);
 
                     foreach (var livrolocalizado in livrosAchados)
                     {
-                        livrolocalizado.DetalheLivro ( );
+                        livrolocalizado.DetalheLivro();
                     }
 
-                    Console.Write ( "\nAgora, digite o id do livro: " );
-                    var livroId = int.Parse(Console.ReadLine ( ));
+                    Console.Write("\nAgora, digite o id do livro: ");
+                    var livroId = int.Parse(Console.ReadLine());
 
-                    var adicionarLivro = livros.Find ( l => l.Id == livroId );
+                    var adicionarLivro = livros.Find(l => l.Id == livroId);
 
-                    livroList.Add ( adicionarLivro );
+                    livroList.Add(adicionarLivro);
 
                     #endregion
 
 
-                    Console.WriteLine ( "\nQuer procurar mais algum livro? [ Sim ou Não ]" );
-                    var resposta = Console.ReadLine ( ).ToLower ( );
+                    Console.WriteLine("\nQuer procurar mais algum livro? [ Sim ou Nï¿½o ]");
+                    var resposta = Console.ReadLine().ToLower();
 
-                    if (resposta == "n" || resposta == "nao" || resposta == "não")
+                    if (resposta == "n" || resposta == "nao" || resposta == "nï¿½o")
                     {
                         resp = false;
                     }
 
                 } while (resp);
 
-                var emprestimo = new Emprestimo ( id, usuarioId, livroList );
+                var emprestimo = new Emprestimo(id, usuarioId, livroList);
 
-                emprestimos.Add ( emprestimo );
+                emprestimos.Add(emprestimo);
 
-                GravarArquivo ( );
+                GravarArquivo();
             }
             catch (Exception ex)
             {
-                Console.WriteLine ( $"Erro: {ex.Message}" );
+                Console.WriteLine($"Erro: {ex.Message}");
             }
         }
 
-        public void DevolverLivro ( )
+        public void DevolverLivro()
         {
             try
             {
-                throw new NotImplementedException ( );
+                throw new NotImplementedException();
             }
             catch (Exception ex)
             {
-                Console.WriteLine ( $"Erro: {ex.Message}" );
+                Console.WriteLine($"Erro: {ex.Message}");
             }
         }
 
-        public void CriarArquivo ( )
+        public void CriarArquivo()
         {
             try
             {
-                DirectoryInfo di = new DirectoryInfo ( folder );
+                DirectoryInfo di = new DirectoryInfo(folder);
 
                 if (!di.Exists)
                 {
-                    Directory.CreateDirectory ( folder );
+                    Directory.CreateDirectory(folder);
                 }
 
-                if (!File.Exists ( pathEmprestimos ))
+                if (!File.Exists(pathEmprestimos))
                 {
-                    File.WriteAllText ( pathEmprestimos, string.Empty );
+                    File.WriteAllText(pathEmprestimos, string.Empty);
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine ( $"Erro: {ex.ToString ( )}" );
+                Console.WriteLine($"Erro: {ex.ToString()}");
             }
         }
 
-        public void GravarArquivo ( )
+        public void GravarArquivo()
         {
             try
             {
-                CriarArquivo ( );
+                CriarArquivo();
 
-                string serializado = JsonConvert.SerializeObject ( emprestimos, Formatting.Indented );
+                string serializado = JsonConvert.SerializeObject(emprestimos, Formatting.Indented);
 
-                File.WriteAllText ( pathEmprestimos, serializado );
+                File.WriteAllText(pathEmprestimos, serializado);
             }
             catch (Exception ex)
             {
-                Console.WriteLine ( $"Erro: {ex.ToString ( )}" );
+                Console.WriteLine($"Erro: {ex.ToString()}");
             }
         }
     }

@@ -14,18 +14,18 @@ namespace SGL.BIBLIOTECA.ConsoleApp.Models
         string pathUsuarios = "Gravadas\\usuario.json";
         string pathEmprestimos = "Gravadas\\emprestimo.json";
 
-        public void RecebeTodosLivros()
+        public void RecebeTodosLivros ( )
         {
             string deserializado = File.ReadAllText(pathLivros);
 
-            livros = JsonConvert.DeserializeObject<List<Livro>> (deserializado);
+            livros = JsonConvert.DeserializeObject<List<Livro>> ( deserializado );
         }
 
-        public void RecebeTodosUsuarios()
+        public void RecebeTodosUsuarios ( )
         {
             string deserializado = File.ReadAllText(pathUsuarios);
 
-            usuarios = JsonConvert.DeserializeObject<List<Usuario>>(deserializado);
+            usuarios = JsonConvert.DeserializeObject<List<Usuario>> ( deserializado );
         }
 
         public void EmprestarLivro ( )
@@ -89,7 +89,7 @@ namespace SGL.BIBLIOTECA.ConsoleApp.Models
                         resp = false;
                     }
 
-                } while ( resp );
+                } while (resp);
 
                 var emprestimo = new Emprestimo ( id, usuarioId, livroList );
 
@@ -152,3 +152,5 @@ namespace SGL.BIBLIOTECA.ConsoleApp.Models
                 Console.WriteLine ( $"Erro: {ex.ToString ( )}" );
             }
         }
+    }
+}

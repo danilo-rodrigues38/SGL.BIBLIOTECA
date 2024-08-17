@@ -40,17 +40,53 @@ while (true)
 
 static void MenuEmprestimoDevolucao ( )
 {
-    Console.WriteLine ( "Link Funcionando" );
+    EmprestimoManager emprestimoManager = new EmprestimoManager ( );
+    emprestimoManager.RecebeTodosUsuarios ( );
+    emprestimoManager.RecebeTodosLivros ( );
+
+    while (true)
+    {
+
+        Console.Clear ( );
+        Cabecalho ( );
+
+        Console.WriteLine ( "          Escolha uma opcão          " );
+        Console.WriteLine ( "--------------------------------------\n" );
+        Console.WriteLine ( "1 - Emprestar um livro" );
+        Console.WriteLine ( "2 - Devolver um livro" );
+        Console.WriteLine ( "3 - Retornar ao menu anterior" );
+
+        var opcao = Console.ReadLine ( );
+
+        switch ( opcao )
+        {
+            case "1":
+                emprestimoManager.EmprestarLivro ( );
+                break;
+
+            case "2":
+                emprestimoManager.DevolverLivro ( );
+                break;
+
+            case "3":
+                return;
+
+            default:
+                Console.WriteLine ( "Opção inválida!" );
+                Pausa ( );
+                break;
+        }
+    }
 }
 
 static void MenuUsuarioManager()
 {
     UsuarioManager usuarioManager = new UsuarioManager();
+    usuarioManager.LerArquivo ( );
 
     while(true)
     {
         Console.Clear();
-        usuarioManager.LerArquivo ( );
         Cabecalho();
         
         Console.WriteLine ( "          Escolha uma opcão          " );
@@ -110,11 +146,11 @@ static void MenuUsuarioManager()
 static void MenuLivraria( )
 {
     Acervo acervo = new Acervo ();
+    acervo.LerArquivo ( );
 
     while (true)
     {
         Console.Clear ( );
-        acervo.LerArquivo ( );
         Cabecalho ( );
         
         Console.WriteLine ( "          Escolha uma opcão          " );

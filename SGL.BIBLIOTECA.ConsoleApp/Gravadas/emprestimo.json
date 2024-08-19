@@ -1,0 +1,39 @@
+[
+  {
+    "Id": 1,
+    "UsuarioId": {
+      "Id": 14,
+      "Nome": "Maria Souza",
+      "Email": "maria.souza@gmail.com",
+      "Ativo": true
+    },
+    "LivroList": [
+      {
+        "Id": 1,
+        "Titulo": "Arquitetura Limpa: o Guia do Artesão Para Estrutura e Design de Software",
+        "Autor": "Robert C. Martin",
+        "Isbn": "978-8550804606",
+        "DataPublicacao": "2019-04-23T00:00:00",
+        "Ativo": true
+      },
+      {
+        "Id": 2,
+        "Titulo": "Desenvolvimento ágil Limpo: de Volta às Origens (Volume 1)",
+        "Autor": "Robert C. Martin",
+        "Isbn": "978-8550815008",
+        "DataPublicacao": "2020-11-25T00:00:00",
+        "Ativo": true
+      },
+      {
+        "Id": 3,
+        "Titulo": "Código Limpo: Habilidades Práticas do Agile Software",
+        "Autor": "Robert C. Martin",
+        "Isbn": "978-8576082675",
+        "DataPublicacao": "2009-09-08T00:00:00",
+        "Ativo": true
+      }
+    ],
+    "DataEmprestimo": "2024-08-19T13:52:07.6904089-03:00",
+    "DataDevolução": "2024-09-03T00:00:00-03:00"
+  }
+]

@@ -43,10 +43,10 @@ static void MenuEmprestimoDevolucao ( )
     EmprestimoManager emprestimoManager = new EmprestimoManager ( );
     emprestimoManager.RecebeTodosUsuarios ( );
     emprestimoManager.RecebeTodosLivros ( );
+    emprestimoManager.LerArquivo ( );
 
     while (true)
     {
-
         Console.Clear ( );
         Cabecalho ( );
 
@@ -54,7 +54,8 @@ static void MenuEmprestimoDevolucao ( )
         Console.WriteLine ( "--------------------------------------\n" );
         Console.WriteLine ( "1 - Emprestar um livro" );
         Console.WriteLine ( "2 - Devolver um livro" );
-        Console.WriteLine ( "3 - Retornar ao menu anterior" );
+        Console.WriteLine ( "3 - Listar todos os empréstimos" );
+        Console.WriteLine ( "4 - Retornar ao menu anterior" );
 
         var opcao = Console.ReadLine ( );
 
@@ -69,6 +70,10 @@ static void MenuEmprestimoDevolucao ( )
                 break;
 
             case "3":
+                emprestimoManager.ListarTodosEmprestimos ( );
+                break;
+
+            case "4":
                 return;
 
             default:

@@ -36,9 +36,9 @@ namespace SGL.BIBLIOTECA.ConsoleApp.Models
 
                 var id = emprestimos.Count + 1;
 
-                #region Localizar Usu�rio
+                #region Localizar Usu�rio
 
-                Console.Write ( "Digite o nome do usu�ro: " );
+                Console.Write ( "Digite o nome do usu�ro: " );
                 var nomeUsuario = Console.ReadLine ( );
 
                 var usuariosLocalizados = usuarios.Where(u => u.Nome.ToUpper().Contains (nomeUsuario.ToUpper()) && u.Ativo);
@@ -76,15 +76,22 @@ namespace SGL.BIBLIOTECA.ConsoleApp.Models
 
                     var adicionarLivro = livros.Find ( l => l.Id == livroId );
 
-                    livroList.Add ( adicionarLivro );
+                    if (livroList.Count < 4 )
+                    {
+                        livroList.Add ( adicionarLivro );
+                    }
+                    else
+                    {
+                        Console.WriteLine ( "Limite máximo de empréstimos por pessoa, é limitado a três livros." );
+                    }
 
                     #endregion
 
 
-                    Console.WriteLine ( "\nQuer procurar mais algum livro? [ Sim ou N�o ]" );
+                    Console.WriteLine ( "\nQuer procurar mais algum livro? [ Sim ou N�o ]" );
                     var resposta = Console.ReadLine ( ).ToLower ( );
 
-                    if (resposta == "n" || resposta == "nao" || resposta == "n�o")
+                    if (resposta == "n" || resposta == "nao" || resposta == "n�o")
                     {
                         resp = false;
                     }
@@ -101,6 +108,27 @@ namespace SGL.BIBLIOTECA.ConsoleApp.Models
             {
                 Console.WriteLine ( $"Erro: {ex.Message}" );
             }
+        }
+
+        public void ListarTodosEmprestimos ( )
+        {
+            Console.WriteLine ( "Listagem dos usuário com empréstimos ativos." );
+
+            foreach (var emprestimo in emprestimos)
+            {
+                var i = 1;
+                Console.WriteLine ( $"Empréstimo: Id nº {emprestimo.Id}" );
+                Console.WriteLine ( $"Usuário: {emprestimo.UsuarioId.Nome}" );
+
+                foreach (var nomeLivro in emprestimo.LivroList)
+                {
+                    Console.WriteLine ( $"     Livro {i}: {nomeLivro.Titulo}" );
+                    i++;
+                }
+            }
+
+            Console.ReadKey ( );
+            
         }
 
         public void DevolverLivro ( )
@@ -133,7 +161,7 @@ namespace SGL.BIBLIOTECA.ConsoleApp.Models
             }
             catch (Exception ex)
             {
-                Console.WriteLine ( $"Erro: {ex.ToString ( )}" );
+                Console.WriteLine ( $"Erro: {ex.Message}" );
             }
         }
 
@@ -149,7 +177,21 @@ namespace SGL.BIBLIOTECA.ConsoleApp.Models
             }
             catch (Exception ex)
             {
-                Console.WriteLine ( $"Erro: {ex.ToString ( )}" );
+                Console.WriteLine ( $"Erro: {ex.Message}" );
+            }
+        }
+
+        public void LerArquivo ( )
+        {
+            try
+            {
+                string deserializado = File.ReadAllText ( pathEmprestimos );
+
+                var emprestimos = JsonConvert.DeserializeObject ( deserializado );
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine ( $"Erro: {ex.Message}" );
             }
         }
     }

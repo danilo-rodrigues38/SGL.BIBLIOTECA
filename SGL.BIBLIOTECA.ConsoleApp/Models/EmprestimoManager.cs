@@ -38,7 +38,7 @@ namespace SGL.BIBLIOTECA.ConsoleApp.Models
 
                 #region Localizar Usuario
 
-                Console.Write ( "Digite o nome do usuaro: " );
+                Console.Write ( "Digite o nome do usuario: " );
                 var nomeUsuario = Console.ReadLine ( );
 
                 var usuariosLocalizados = usuarios.Where(u => u.Nome.ToUpper().Contains (nomeUsuario.ToUpper()) && u.Ativo);
@@ -86,7 +86,7 @@ namespace SGL.BIBLIOTECA.ConsoleApp.Models
                         Console.WriteLine ( "\nTecle ENTER para sair." );
                         Console.ReadLine ();
 
-                        GravarArquivo ( );
+                        GravarArquivo ( id, usuarioId, livroList );
 
                         return;
                     }
@@ -104,11 +104,7 @@ namespace SGL.BIBLIOTECA.ConsoleApp.Models
 
                 } while (resp);
 
-                var emprestimo = new Emprestimo ( id, usuarioId, livroList );
-
-                emprestimos.Add ( emprestimo );
-
-                GravarArquivo ( );
+                GravarArquivo ( id, usuarioId, livroList );
             }
             catch (Exception ex)
             {
@@ -172,11 +168,15 @@ namespace SGL.BIBLIOTECA.ConsoleApp.Models
             }
         }
 
-        public void GravarArquivo ( )
+        public void GravarArquivo ( int id, Usuario usuarioId, List<Livro> livroList )
         {
             try
             {
                 CriarArquivo ( );
+
+                var emprestimo = new Emprestimo ( id, usuarioId, livroList );
+
+                emprestimos.Add ( emprestimo );
 
                 string serializado = JsonConvert.SerializeObject ( emprestimos, Formatting.Indented );
 

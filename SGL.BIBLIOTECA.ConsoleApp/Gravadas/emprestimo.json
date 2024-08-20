@@ -2,9 +2,59 @@
   {
     "Id": 1,
     "UsuarioId": {
-      "Id": 14,
-      "Nome": "Maria Souza",
-      "Email": "maria.souza@gmail.com",
+      "Id": 3,
+      "Nome": "Danilo Oliveira",
+      "Email": "danilo.oliveira@gmail.com",
+      "Ativo": true
+    },
+    "LivroList": [
+      {
+        "Id": 3,
+        "Titulo": "Código Limpo: Habilidades Práticas do Agile Software",
+        "Autor": "Robert C. Martin",
+        "Isbn": "978-8576082675",
+        "DataPublicacao": "2009-09-08T00:00:00",
+        "Ativo": true
+      }
+    ],
+    "DataEmprestimo": "2024-08-19T21:41:11.3630087-03:00",
+    "DataDevolução": "2024-09-03T00:00:00-03:00"
+  },
+  {
+    "Id": 2,
+    "UsuarioId": {
+      "Id": 7,
+      "Nome": "Emanuel Nobrega",
+      "Email": "emanuelnobrega@gmail.com",
+      "Ativo": true
+    },
+    "LivroList": [
+      {
+        "Id": 9,
+        "Titulo": "Test-Driven Development: By Example",
+        "Autor": "Kent Beck",
+        "Isbn": "978-0321146533",
+        "DataPublicacao": "2002-11-08T00:00:00",
+        "Ativo": true
+      },
+      {
+        "Id": 48,
+        "Titulo": "The Art of Unit Testing: With Examples in .NET",
+        "Autor": "Roy Osherove",
+        "Isbn": "978-1617290893",
+        "DataPublicacao": "2013-11-19T00:00:00",
+        "Ativo": true
+      }
+    ],
+    "DataEmprestimo": "2024-08-19T21:42:15.2411596-03:00",
+    "DataDevolução": "2024-09-03T00:00:00-03:00"
+  },
+  {
+    "Id": 3,
+    "UsuarioId": {
+      "Id": 30,
+      "Nome": "Bianca Rodrigues",
+      "Email": "bianca.rodrigues@gmail.com",
       "Ativo": true
     },
     "LivroList": [
@@ -17,23 +67,81 @@
         "Ativo": true
       },
       {
-        "Id": 2,
-        "Titulo": "Desenvolvimento ágil Limpo: de Volta às Origens (Volume 1)",
-        "Autor": "Robert C. Martin",
-        "Isbn": "978-8550815008",
-        "DataPublicacao": "2020-11-25T00:00:00",
+        "Id": 41,
+        "Titulo": "Continuous Delivery: Reliable Software Releases through Build, Test, and Deployment Automation",
+        "Autor": "Jez Humble, David Farley",
+        "Isbn": "978-0321601919",
+        "DataPublicacao": "2010-07-27T00:00:00",
         "Ativo": true
       },
       {
-        "Id": 3,
-        "Titulo": "Código Limpo: Habilidades Práticas do Agile Software",
+        "Id": 4,
+        "Titulo": "O Codificador Limpo",
         "Autor": "Robert C. Martin",
-        "Isbn": "978-8576082675",
-        "DataPublicacao": "2009-09-08T00:00:00",
+        "Isbn": "978-8576086475",
+        "DataPublicacao": "2012-05-04T00:00:00",
         "Ativo": true
       }
     ],
-    "DataEmprestimo": "2024-08-19T13:52:07.6904089-03:00",
+    "DataEmprestimo": "2024-08-19T21:43:19.3597573-03:00",
+    "DataDevolução": "2024-09-03T00:00:00-03:00"
+  },
+  {
+    "Id": 4,
+    "UsuarioId": {
+      "Id": 13,
+      "Nome": "Joaquim Silva",
+      "Email": "joaquim.silva@gmail.com",
+      "Ativo": true
+    },
+    "LivroList": [
+      {
+        "Id": 14,
+        "Titulo": "Clean Code: A Handbook of Agile Software Craftsmanship",
+        "Autor": "Robert C. Martin",
+        "Isbn": "978-0132350884",
+        "DataPublicacao": "2008-08-11T00:00:00",
+        "Ativo": true
+      },
+      {
+        "Id": 19,
+        "Titulo": "Cracking the Coding Interview: 189 Programming Questions and Solutions",
+        "Autor": "Gayle Laakmann McDowell",
+        "Isbn": "978-0984782857",
+        "DataPublicacao": "2015-07-01T00:00:00",
+        "Ativo": true
+      },
+      {
+        "Id": 52,
+        "Titulo": "Code: The Hidden Language of Computer Hardware and Software",
+        "Autor": "Charles Petzold",
+        "Isbn": "978-0735611313",
+        "DataPublicacao": "1999-10-21T00:00:00",
+        "Ativo": true
+      }
+    ],
+    "DataEmprestimo": "2024-08-19T21:55:26.2359494-03:00",
+    "DataDevolução": "2024-09-03T00:00:00-03:00"
+  },
+  {
+    "Id": 5,
+    "UsuarioId": {
+      "Id": 32,
+      "Nome": "Mariana Azevedo",
+      "Email": "mariana.azevedo@gmail.com",
+      "Ativo": true
+    },
+    "LivroList": [
+      {
+        "Id": 34,
+        "Titulo": "Eloquent JavaScript: A Modern Introduction to Programming",
+        "Autor": "Marijn Haverbeke",
+        "Isbn": "978-1593279509",
+        "DataPublicacao": "2018-12-04T00:00:00",
+        "Ativo": true
+      }
+    ],
+    "DataEmprestimo": "2024-08-19T22:03:26.5065434-03:00",
     "DataDevolução": "2024-09-03T00:00:00-03:00"
   }
 ]

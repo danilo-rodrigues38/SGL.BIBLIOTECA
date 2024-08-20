@@ -4,15 +4,15 @@ namespace SGL.BIBLIOTECA.ConsoleApp.Models
 {
     public class EmprestimoManager
     {
-        List<Livro> livros = new List<Livro>();
-        List<Usuario> usuarios = new List<Usuario>();
-        List<Emprestimo> emprestimos = new List<Emprestimo>();
-
         string folder = "Gravadas";
         string fileName = "emprestimo.json";
         string pathLivros = "Gravadas\\biblioteca.json";
         string pathUsuarios = "Gravadas\\usuario.json";
         string pathEmprestimos = "Gravadas\\emprestimo.json";
+
+        List<Livro> livros = new List<Livro>();
+        List<Usuario> usuarios = new List<Usuario>();
+        List<Emprestimo> emprestimos = new List<Emprestimo>();
 
         public void RecebeTodosLivros ( )
         {
@@ -36,9 +36,9 @@ namespace SGL.BIBLIOTECA.ConsoleApp.Models
 
                 var id = emprestimos.Count + 1;
 
-                #region Localizar Usu�rio
+                #region Localizar Usuario
 
-                Console.Write ( "Digite o nome do usu�ro: " );
+                Console.Write ( "Digite o nome do usuaro: " );
                 var nomeUsuario = Console.ReadLine ( );
 
                 var usuariosLocalizados = usuarios.Where(u => u.Nome.ToUpper().Contains (nomeUsuario.ToUpper()) && u.Ativo);
@@ -76,19 +76,25 @@ namespace SGL.BIBLIOTECA.ConsoleApp.Models
 
                     var adicionarLivro = livros.Find ( l => l.Id == livroId );
 
-                    if (livroList.Count < 4 )
+                    if (livroList.Count < 3 )
                     {
                         livroList.Add ( adicionarLivro );
                     }
                     else
                     {
-                        Console.WriteLine ( "Limite máximo de empréstimos por pessoa, é limitado a três livros." );
+                        Console.WriteLine ( "\nLimite máximo de empréstimos por pessoa, é limitado a três livros." );
+                        Console.WriteLine ( "\nTecle ENTER para sair." );
+                        Console.ReadLine ();
+
+                        GravarArquivo ( );
+
+                        return;
                     }
 
                     #endregion
 
 
-                    Console.WriteLine ( "\nQuer procurar mais algum livro? [ Sim ou N�o ]" );
+                    Console.WriteLine ( "\nQuer procurar mais algum livro? [ Sim ou Nao ]" );
                     var resposta = Console.ReadLine ( ).ToLower ( );
 
                     if (resposta == "n" || resposta == "nao" || resposta == "n�o")
@@ -112,17 +118,18 @@ namespace SGL.BIBLIOTECA.ConsoleApp.Models
 
         public void ListarTodosEmprestimos ( )
         {
-            Console.WriteLine ( "Listagem dos usuário com empréstimos ativos." );
+            Console.WriteLine ( "Listagem dos usuário com empréstimos ativos.\n" );
 
             foreach (var emprestimo in emprestimos)
             {
                 var i = 1;
-                Console.WriteLine ( $"Empréstimo: Id nº {emprestimo.Id}" );
-                Console.WriteLine ( $"Usuário: {emprestimo.UsuarioId.Nome}" );
+                Console.WriteLine ( $"\nEmpréstimo: Id nº {emprestimo.Id}" );
+                Console.WriteLine ( $"--------------------\n" );
+                Console.WriteLine ( $"     Usuário: {emprestimo.UsuarioId.Nome}" );
 
                 foreach (var nomeLivro in emprestimo.LivroList)
                 {
-                    Console.WriteLine ( $"     Livro {i}: {nomeLivro.Titulo}" );
+                    Console.WriteLine ( $"          Livro {i}: {nomeLivro.Titulo}" );
                     i++;
                 }
             }
@@ -187,7 +194,7 @@ namespace SGL.BIBLIOTECA.ConsoleApp.Models
             {
                 string deserializado = File.ReadAllText ( pathEmprestimos );
 
-                var emprestimos = JsonConvert.DeserializeObject ( deserializado );
+                emprestimos = JsonConvert.DeserializeObject<List<Emprestimo>> ( deserializado );
             }
             catch (Exception ex)
             {

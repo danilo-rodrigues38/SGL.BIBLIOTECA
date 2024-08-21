@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using System.Collections.Immutable;
 
 namespace SGL.BIBLIOTECA.ConsoleApp.Models
 {
@@ -13,6 +14,10 @@ namespace SGL.BIBLIOTECA.ConsoleApp.Models
         List<Livro> livros = new List<Livro>();
         List<Usuario> usuarios = new List<Usuario>();
         List<Emprestimo> emprestimos = new List<Emprestimo>();
+
+        int id =0;
+        Usuario usuarioId;
+        List<Livro> livroList;
 
         public void RecebeTodosLivros ( )
         {
@@ -34,7 +39,7 @@ namespace SGL.BIBLIOTECA.ConsoleApp.Models
             {
                 var livroList = new List<Livro>();
 
-                var id = emprestimos.Count + 1;
+                id = emprestimos.Count + 1;
 
                 #region Localizar Usuario
 
@@ -138,7 +143,12 @@ namespace SGL.BIBLIOTECA.ConsoleApp.Models
         {
             try
             {
-                throw new NotImplementedException ( );
+                Console.Write ( "Digite o id do empréstimo: " );
+                var idEmprestimo = int.Parse ( Console.ReadLine ( ) );
+
+                emprestimos.RemoveAll ( i => i.Id == idEmprestimo );
+
+                SalvarArquivo ( );
             }
             catch (Exception ex)
             {
@@ -178,6 +188,20 @@ namespace SGL.BIBLIOTECA.ConsoleApp.Models
 
                 emprestimos.Add ( emprestimo );
 
+                string serializado = JsonConvert.SerializeObject ( emprestimos, Formatting.Indented );
+
+                File.WriteAllText ( pathEmprestimos, serializado );
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine ( $"Erro: {ex.Message}" );
+            }
+        }
+
+        public void SalvarArquivo ( )
+        {
+            try
+            {
                 string serializado = JsonConvert.SerializeObject ( emprestimos, Formatting.Indented );
 
                 File.WriteAllText ( pathEmprestimos, serializado );

@@ -5,19 +5,14 @@ namespace SGL.BIBLIOTECA.ConsoleApp.Models
 {
     public class EmprestimoManager
     {
-        string folder = "Gravadas";
-        string fileName = "emprestimo.json";
-        string pathLivros = "Gravadas\\biblioteca.json";
-        string pathUsuarios = "Gravadas\\usuario.json";
-        string pathEmprestimos = "Gravadas\\emprestimo.json";
+        readonly string folder = "Gravadas";
+        readonly string pathLivros = "Gravadas\\biblioteca.json";
+        readonly string pathUsuarios = "Gravadas\\usuario.json";
+        readonly string pathEmprestimos = "Gravadas\\emprestimo.json";
 
-        List<Livro> livros = new List<Livro>();
-        List<Usuario> usuarios = new List<Usuario>();
-        List<Emprestimo> emprestimos = new List<Emprestimo>();
-
-        int id =0;
-        Usuario usuarioId;
-        List<Livro> livroList;
+        List<Livro> livros = [];
+        List<Usuario> usuarios = [];
+        List<Emprestimo> emprestimos = [];
 
         public void RecebeTodosLivros ( )
         {
@@ -39,14 +34,14 @@ namespace SGL.BIBLIOTECA.ConsoleApp.Models
             {
                 var livroList = new List<Livro>();
 
-                id = emprestimos.Count + 1;
+                var id = emprestimos.Count + 1;
 
                 #region Localizar Usuario
 
                 Console.Write ( "Digite o nome do usuario: " );
                 var nomeUsuario = Console.ReadLine ( );
 
-                var usuariosLocalizados = usuarios.Where(u => u.Nome.ToUpper().Contains (nomeUsuario.ToUpper()) && u.Ativo);
+                var usuariosLocalizados = usuarios.Where(u => u.Nome.Contains ( nomeUsuario, StringComparison.CurrentCultureIgnoreCase ) && u.Ativo);
 
                 foreach (var usuarioLocalizado in usuariosLocalizados)
                 {
@@ -69,7 +64,7 @@ namespace SGL.BIBLIOTECA.ConsoleApp.Models
                     Console.Write ( "\nAgora digite o nome do livro que deseja: " );
                     var livroescolhido = Console.ReadLine ( );
 
-                    var livrosAchados = livros.Where ( a => a.Titulo.ToUpper ( ).Contains ( livroescolhido.ToUpper ( ) ) && a.Ativo );
+                    var livrosAchados = livros.Where ( a => a.Titulo.Contains ( livroescolhido, StringComparison.CurrentCultureIgnoreCase ) && a.Ativo );
 
                     foreach (var livrolocalizado in livrosAchados)
                     {

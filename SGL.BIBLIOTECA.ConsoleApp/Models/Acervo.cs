@@ -4,11 +4,8 @@ namespace SGL.BIBLIOTECA.ConsoleApp.Models
 {
     public class Acervo
     {
-        string folder = "Gravadas";
-        string fileName = "biblioteca.json";
-        string path = "Gravadas\\biblioteca.json";
-        string line;
-
+        readonly string folder = "Gravadas";
+        readonly string path = "Gravadas\\biblioteca.json";
         public List<Livro> Livros = new List<Livro>();
 
         public void AdicionarLivro ( )
@@ -99,7 +96,7 @@ namespace SGL.BIBLIOTECA.ConsoleApp.Models
                 Console.Write ( "Digite o título do livro que deseja localizar: " );
                 var tituloLivro = Console.ReadLine ( );
 
-                var tituloLivroLocalizar = Livros.Where(l => l.Titulo.ToUpper().Contains(tituloLivro.ToUpper()) && l.Ativo);
+                var tituloLivroLocalizar = Livros.Where(l => l.Titulo.Contains ( tituloLivro, StringComparison.CurrentCultureIgnoreCase ) && l.Ativo);
 
                 foreach (var livro in tituloLivroLocalizar)
                 {
@@ -118,7 +115,7 @@ namespace SGL.BIBLIOTECA.ConsoleApp.Models
 
                 var nomeAutor = Console.ReadLine ( );
 
-                var autorLocalizado = Livros.Where(a => a.Autor.ToUpper().Contains(nomeAutor.ToUpper()) && a.Ativo);
+                var autorLocalizado = Livros.Where(a => a.Autor.Contains ( nomeAutor, StringComparison.CurrentCultureIgnoreCase ) && a.Ativo);
 
                 foreach (var livro in autorLocalizado)
                 {

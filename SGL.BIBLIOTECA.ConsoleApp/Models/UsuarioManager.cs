@@ -5,11 +5,8 @@ namespace SGL.BIBLIOTECA.ConsoleApp.Models
     public class UsuarioManager
     {
         string folder = "Gravadas";
-        string fileName = "usuario.json";
         string path = "Gravadas\\usuario.json";
-        string line;
-
-        List<Usuario> usuarios = new List<Usuario>();
+        List<Usuario> usuarios = [];
 
         public void AdicionarUsuario ( )
         {
@@ -69,7 +66,7 @@ namespace SGL.BIBLIOTECA.ConsoleApp.Models
                 Console.Write ( "Digite o nome a ser localizado: " );
                 var nomeUsuario = Console.ReadLine ( );
 
-                var usuariosLocalizados = usuarios.Where(u => u.Nome.ToUpper().Contains (nomeUsuario.ToUpper()) && u.Ativo);
+                var usuariosLocalizados = usuarios.Where(u => u.Nome.Contains ( nomeUsuario, StringComparison.CurrentCultureIgnoreCase ) && u.Ativo);
 
                 foreach (var usuarioLocalizado in usuariosLocalizados)
                 {
@@ -90,7 +87,7 @@ namespace SGL.BIBLIOTECA.ConsoleApp.Models
                 Console.Write ( "Digite o e-mail a ser localizado: " );
                 var emailUsuario = Console.ReadLine ( );
 
-                var emailUsuariosLocalizados = usuarios.Where(e => e.Email.ToLower().Contains (emailUsuario.ToLower()) && e.Ativo);
+                var emailUsuariosLocalizados = usuarios.Where(e => e.Email.Contains ( emailUsuario, StringComparison.CurrentCultureIgnoreCase ) && e.Ativo);
 
                 foreach (var email in emailUsuariosLocalizados)
                 {
